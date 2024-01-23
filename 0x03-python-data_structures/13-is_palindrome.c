@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 void reverse(listint_t **head);
-int copare_lists(listint_t *head, listint_t *middle, int len);
+int compare_lists(listint_t *head, listint_t *middle, int len);
 
 /**
  * is_palindrome - checks if a singly liked list is a palindrome
