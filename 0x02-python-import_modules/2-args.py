@@ -16,3 +16,4 @@ if __name__ == "__main__":
     # Print the position and value of each argument
     for i in range(1, x + 1):
         print("{}: {}".format(i, argv[i]))
+
