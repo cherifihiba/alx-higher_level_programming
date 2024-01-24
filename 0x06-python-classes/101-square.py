@@ -75,9 +75,10 @@ class Square:
                 result += " "
             for k in range(self.__size):
                 result += "#"
-            result += "\n"
+            if i != self.__size - 1:
+                result += "\n"
 
-        return result[:-1]  # Remove the trailing newline for the last line
+        return result
 
 if __name__ == "__main__":
     my_square = Square(5, (0, 0))
