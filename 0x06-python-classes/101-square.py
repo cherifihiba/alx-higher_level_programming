@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """Define a class Square."""
 
 
@@ -8,7 +7,6 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """Initialize a new square.
-
         Args:
             size (int): The size of the new square.
             position (int, int): The position of the new square.
@@ -19,7 +17,7 @@ class Square:
     @property
     def size(self):
         """Get/set the current size of the square."""
-        return (self.__size)
+        return self.__size
 
     @size.setter
     def size(self, value):
@@ -32,7 +30,7 @@ class Square:
     @property
     def position(self):
         """Get/set the current position of the square."""
-        return (self.__position)
+        return self.__position
 
     @position.setter
     def position(self, value):
@@ -45,7 +43,7 @@ class Square:
 
     def area(self):
         """Return the current area of the square."""
-        return (self.__size * self.__size)
+        return self.__size * self.__size
 
     def my_print(self):
         """Print the square with the # character."""
@@ -53,20 +51,39 @@ class Square:
             print("")
             return
 
-        [print("") for i in range(0, self.__position[1])]
-        for i in range(0, self.__size):
-            [print(" ", end="") for j in range(0, self.__position[0])]
-            [print("#", end="") for k in range(0, self.__size)]
+        for i in range(self.__position[1]):
+            print("")
+
+        for i in range(self.__size):
+            for j in range(self.__position[0]):
+                print(" ", end="")
+            for k in range(self.__size):
+                print("#", end="")
             print("")
 
     def __str__(self):
-        """Define the print() representation of a Square."""
-        if self.__size != 0:
-            [print("") for i in range(0, self.__position[1])]
-        for i in range(0, self.__size):
-            [print(" ", end="") for j in range(0, self.__position[0])]
-            [print("#", end="") for k in range(0, self.__size)]
-            if i != self.__size - 1:
-                print("")
-        return ("")
-      
+        """String representation of the square."""
+        result = ""
+        if self.__size == 0:
+            return result
+
+        for i in range(self.__position[1]):
+            result += "\n"
+
+        for i in range(self.__size):
+            for j in range(self.__position[0]):
+                result += " "
+            for k in range(self.__size):
+                result += "#"
+            result += "\n"
+
+        return result[:-1]  # Remove the trailing newline for the last line
+
+if __name__ == "__main__":
+    my_square = Square(5, (0, 0))
+    print(my_square)
+
+    print("--")
+
+    my_square = Square(5, (4, 1))
+    print(my_square)
