@@ -7,7 +7,7 @@ def init_board(n):
     """Initialize an 'n''x''n' sized chessboard with 0's."""
     board = []
     [board.append([]) for i in range(n)]
-    [row.append(' ') for i in range(n) for row in board]
+    [row.append('') for i in range(n) for row in board]
     return (board)
 
 def board_deepcopy(board):
@@ -37,13 +37,13 @@ def xout(board, row, col):
     for c in range(col + 1, len(board)):
         board[row][c] = "x"
     # X out all backwords spots
-    for c in range(col - 1, - 1, -1):
-        board [row][c] = "x"
-    # X out all spots bellow
+    for c in range(col - 1, -1, -1):
+        board[row][c] = "x"
+    # X out all spots below
     for r in range(row + 1, len(board)):
         board[r][col] = "x"
     # X out all spots above
-    for r in range(row - 1, - 1, -1):
+    for r in range(row - 1, -1, -1):
         board[r][col] = "x"
     # X out all spots diagonally down to the right
     c = col + 1
@@ -57,7 +57,7 @@ def xout(board, row, col):
     for r in range(row - 1, -1, -1):
         if c < 0:
             break
-        board[r][c]
+        board[r][c] = "x"
         c -= 1
     # X out all spots diagonally up to the right
     c = col + 1
@@ -96,12 +96,12 @@ def recursive_solve(board, row, queens, solutions):
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: nqyeens N")
+        print("Usage: nqueens N")
         sys.exit(1)
-    if sys.argv[1].isdigit() is False:
+    if not sys.argv[1].isdigit():
         print("N must be a number")
         sys.exit(1)
-    if int(sys.argv[1] < 4):
+    if int(sys.argv[1]) < 4:
         print("N must be at least 4")
         sys.exit(1)
 
