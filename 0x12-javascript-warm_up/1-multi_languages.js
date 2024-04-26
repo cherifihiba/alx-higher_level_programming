@@ -6,4 +6,3 @@ const thirdLine = 'JavaScript is amazing';
 console.log(firstLine);
 console.lthirdLineLine);
 console.log(thirdLine);
-
