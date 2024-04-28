@@ -7,3 +7,4 @@ if (firstArg) {
 } else {
 	console.log('No argument')
 }
+
