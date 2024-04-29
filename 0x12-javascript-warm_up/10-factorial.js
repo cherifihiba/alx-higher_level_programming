@@ -10,7 +10,7 @@ function factorial (n) {
   }
 }
 
-const  num = parseInt(process.argv[2]);
-const  result = factorial(num);
+const num = parseInt(process.argv[2]);
+const result = factorial(num);
 
 console.log(result);
