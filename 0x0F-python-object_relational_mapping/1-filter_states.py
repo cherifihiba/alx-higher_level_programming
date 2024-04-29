@@ -13,5 +13,6 @@ if __name__ == "__main__":
     c.execute("SELECT * FROM `states` WHERE `name` LIKE 'N%' ORDER BY `id`")
 
     # Fetch all rows and print the states
-    [print(state) for state in c.fetchall()]
+    for state in c.fetchall():
+        print(state)
 
