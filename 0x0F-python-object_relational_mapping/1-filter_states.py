@@ -10,8 +10,9 @@ if __name__ == "__main__":
     c = db.cursor()
 
     # Execute the SQL query to retrieve all states starting with 'N' sorted by id
-    c.execute("SELECT * FROM `states` WHERE `name` LIKE 'N%' COLLATE utf8_bin ORDER BY `id`")
+    c.execute("SELECT * FROM `states` WHERE `name` LIKE 'N%' ORDER BY `id`")
 
     # Fetch all rows and print the states
     for state in c.fetchall():
         print(state)
+
