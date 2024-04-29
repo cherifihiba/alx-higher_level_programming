@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Module that lists all states from mySQL database"""
+"""Script that lists all states from the database hbtn_0e_0_usa"""
 import sys
 import MySQLdb
 
 def list_states(username, password, database):
-    """
-    Lists all states from the database hbtn_0e_0_usa.
+    """Lists all states from the database hbtn_0e_0_usa.
 
     Args:
         username: mysql username
@@ -22,7 +21,7 @@ def list_states(username, password, database):
     )
     cursor = db.cursor()
 
-    # Execute the SQL query to fetch all states using parameterized query
+    # Execute the SQL query to fetch all states
     cursor.execute("SELECT * FROM states ORDER BY id ASC")
 
     # Fetch all the rows from the query result
