@@ -1,17 +1,14 @@
 #!/usr/bin/node
-
 const fs = require('fs');
 
-if (process.argv.length !== 5) {
-  console.error('Usage: ./concat_files.js <source1> <source2> <destination>');
-  process.exit(1);
-}
+const [,, fileA, fileB, fileC] = process.argv;
 
-const [, , source1, source2, destination] = process.argv;
-
-const data1 = fs.readFileSync(source1, 'utf8');
-const data2 = fs.readFileSync(source2, 'utf8');
-
-fs.writeFileSync(destination, data1 + '\n' + data2);
-
-console.log('Files concatenated successfully!');
+fs.readFile(fileA, 'utf8', (err, dataA) => {
+  if (err) throw err;
+  fs.readFile(fileB, 'utf8', (err, dataB) => {
+    if (err) throw err;
+    fs.writeFile(fileC, dataA.trim() + '\n' + dataB.trim() + '\n', { flag: 'a' }, (err) => {
+      if (err) throw err;
+    });
+  });
+});
