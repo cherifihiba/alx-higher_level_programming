@@ -32,3 +32,5 @@ if __name__ == "__main__":
     print(find_peak(list_of_integers))  # 2
     list_of_integers = [4, 2, 1, 2, 2, 2, 3, 1]
     print(find_peak(list_of_integers))  # 4
+
+# Complexity: O(n)
