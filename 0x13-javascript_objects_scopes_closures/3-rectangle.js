@@ -4,8 +4,8 @@
 class Rectangle {
   constructor(w, h) {
     if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
-      this.width = 0;
-      this.height = 0;
+      this.width = undefined;
+      this.height = undefined;
     } else {
       this.width = w;
       this.height = h;
@@ -13,7 +13,7 @@ class Rectangle {
   }
 
   print() {
-    if (this.width === 0 || this.height === 0) return;
+    if (this.width === undefined || this.height === undefined) return;
     for (let i = 0; i < this.height; i++) {
       console.log('X'.repeat(this.width));
     }
