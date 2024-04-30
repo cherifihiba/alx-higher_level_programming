@@ -4,14 +4,16 @@
 class Rectangle {
   constructor(w, h) {
     if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
-      return {};
+      this.width = 0;
+      this.height = 0;
+    } else {
+      this.width = w;
+      this.height = h;
     }
-    this.width = w;
-    this.height = h;
   }
 
   print() {
-    if (!this.width || !this.height) return;
+    if (this.width === 0 || this.height === 0) return;
     for (let i = 0; i < this.height; i++) {
       console.log('X'.repeat(this.width));
     }
