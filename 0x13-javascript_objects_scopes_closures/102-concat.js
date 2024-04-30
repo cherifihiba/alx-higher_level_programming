@@ -1,25 +1,26 @@
 #!/usr/bin/node
+
 const fs = require('fs');
+const { promisify } = require('util');
 
-const [,, fileA, fileB, fileC] = process.argv;
+const readFile = promisify(fs.readFile);
+const appendFile = promisify(fs.appendFile);
 
-fs.readFile(fileA, 'utf8', (err, dataA) => {
-  if (err) {
-    console.error(err);
-    return;
+async function concatFiles(source1, source2, destination) {
+  try {
+    const data1 = await readFile(source1, 'utf8');
+    const data2 = await readFile(source2, 'utf8');
+    await appendFile(destination, data1 + data2);
+    console.log('Files concatenated successfully!');
+  } catch (error) {
+    console.error('An error occurred:', error);
   }
-  fs.readFile(fileB, 'utf8', (err, dataB) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    const concatenatedData = dataA.trim() + '\n' + dataB.trim() + '\n';
-    fs.writeFile(fileC, concatenatedData, (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      console.log('The files have been concatenated successfully!');
-    });
-  });
-});
+}
+
+if (process.argv.length !== 5) {
+  console.error('Usage: ./concat_files.js <source1> <source2> <destination>');
+  process.exit(1);
+}
+
+const [, , source1, source2, destination] = process.argv;
+concatFiles(source1, source2, destination);
