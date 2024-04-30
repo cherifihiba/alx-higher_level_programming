@@ -1,28 +1,31 @@
 #!/usr/bin/python3
 """
-Module to get GitHub user id using GitHub API
+This script takes GitHub credentials (username and personal access token) and uses the GitHub API
+to display the user's id.
 """
 
-import requests
 import sys
+import requests
 
-def get_github_id(username: str, token: str) -> str:
+def get_github_id(username, password):
     """
-    Function to get GitHub user id using GitHub API
-
+    Get GitHub user ID using GitHub API with Basic Authentication.
+    
     Args:
-        username (str): GitHub username
-        token (str): GitHub personal access token
-
+        username (str): GitHub username.
+        password (str): Personal access token as password.
+        
     Returns:
-        str: GitHub user id
+        int: GitHub user ID.
     """
-    url = f"https://api.github.com/users/{username}"
-    response = requests.get(url, auth=(username, token))
-    data = response.json()
-    return data.get('id')
+    url = f"https://api.github.com/user"
+    response = requests.get(url, auth=(username, password))
+    user_data = response.json()
+    return user_data.get('id')
 
 if __name__ == "__main__":
     username = sys.argv[1]
-    token = sys.argv[2]
-    print(get_github_id(username, token))
+    password = sys.argv[2]
+    github_id = get_github_id(username, password)
+    print(github_id)
+
