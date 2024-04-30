@@ -6,7 +6,7 @@ as the password to access user information (only read:user permission is needed)
 """
 
 import sys
-import requests
+import sys
 
 def get_github_id(username, password):
     """
