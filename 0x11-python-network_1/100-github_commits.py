@@ -1,27 +1,21 @@
 #!/usr/bin/python3
 """
-Module to retrieve the number of commits in a GitHub repository.
+Python script that takes 2 arguments in order to solve this challenge.
+The first argument will be the repository name.
+The second argument will be the owner name.
 """
+
 import requests
 import sys
 
-def get_repo_commits(repo_name, owner_name):
-    """
-    Function to get the number of commits in a GitHub repository.
-
-    Args:
-        repo_name (str): The name of the repository.
-        owner_name (str): The owner of the repository.
-
-    Returns:
-        int: The number of commits in the repository.
-    """
-    url = f"https://api.github.com/repos/{owner_name}/{repo_name}/commits"
+if __name__ == "__main__":
+    repository = sys.argv[1]
+    owner = sys.argv[2]
+    url = f"https://api.github.com/repos/{owner}/{repository}/commits"
     response = requests.get(url)
     commits = response.json()
-    return len(commits)
 
-if __name__ == "__main__":
-    repo_name = sys.argv[1]
-    owner_name = sys.argv[2]
-    print(get_repo_commits(repo_name, owner_name))
+    for commit in commits[:10]:
+        sha = commit.get("sha")
+        author_name = commit.get("commit").get("author").get("name")
+        print(f"{sha}: {author_name}")
