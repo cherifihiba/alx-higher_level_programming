@@ -9,10 +9,9 @@ for (const key in dict) {
   if (dict.hasOwnProperty(key)) {
     const value = dict[key];
     if (!newDict[value]) {
-      newDict[value] = [key];
-    } else {
-      newDict[value].push(key);
+      newDict[value] = [];
     }
+    newDict[value].push(key);
   }
 }
 
