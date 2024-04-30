@@ -13,7 +13,8 @@ fs.readFile(fileA, 'utf8', (err, dataA) => {
       console.error(err);
       return;
     }
-    fs.writeFile(fileC, dataA.trim() + '\n' + dataB.trim() + '\n', (err) => {
+    const concatenatedData = dataA.trim() + '\n' + dataB.trim() + '\n';
+    fs.writeFile(fileC, concatenatedData, (err) => {
       if (err) {
         console.error(err);
         return;
