@@ -24,8 +24,11 @@ def get_github_id(username, password):
     return user_data.get('id')
 
 if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Usage: python3 script.py <username> <password>")
+        sys.exit(1)
+
     username = sys.argv[1]
     password = sys.argv[2]
     github_id = get_github_id(username, password)
     print(github_id)
-
