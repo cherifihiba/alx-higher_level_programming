@@ -7,20 +7,23 @@ def find_peak(list_of_integers):
     if not list_of_integers:
         return None
     n = len(list_of_integers)
-    mid = n // 2
-    if (mid == n - 1 or list_of_integers[mid] >= list_of_integers[mid + 1]) and \
-            (mid == 0 or list_of_integers[mid] >= list_of_integers[mid - 1]):
-        return list_of_integers[mid]
-    if mid != n - 1 and list_of_integers[mid + 1] > list_of_integers[mid]:
-        return find_peak(list_of_integers[mid + 1:])
-    return find_peak(list_of_integers[:mid])
+    if n == 1:
+        return list_of_integers[0]
+    if list_of_integers[0] >= list_of_integers[1]:
+        return list_of_integers[0]
+    if list_of_integers[n - 1] >= list_of_integers[n - 2]:
+        return list_of_integers[n - 1]
+    for i in range(1, n - 1):
+        if list_of_integers[i] >= list_of_integers[i - 1] and \
+           list_of_integers[i] >= list_of_integers[i + 1]:
+            return list_of_integers[i]
 
 
 if __name__ == "__main__":
     list_of_integers = [1, 2, 4, 6, 3]
     print(find_peak(list_of_integers))  # 6
     list_of_integers = [4, 2, 1, 2, 3, 1]
-    print(find_peak(list_of_integers))  # 3
+    print(find_peak(list_of_integers))  # 4
     list_of_integers = [2, 2, 2]
     print(find_peak(list_of_integers))  # 2
     list_of_integers = []
