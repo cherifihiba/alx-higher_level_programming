@@ -1,14 +1,14 @@
 #!/usr/bin/node
-const fs = require('fs');
+const { dict } = require('./101-data');
 
-const [,, fileA, fileB, fileC] = process.argv;
+const sortedDict = {};
 
-fs.readFile(fileA, 'utf8', (err, dataA) => {
-  if (err) throw err;
-  fs.readFile(fileB, 'utf8', (err, dataB) => {
-    if (err) throw err;
-    fs.writeFile(fileC, dataA.trim() + '\n' + dataB.trim() + '\n', { flag: 'a' }, (err) => {
-      if (err) throw err;
-    });
-  });
-});
+for (const key in dict) {
+  const value = dict[key];
+  if (!(value in sortedDict)) {
+    sortedDict[value] = [];
+  }
+  sortedDict[value].push(key);
+}
+
+console.log(sortedDict);
