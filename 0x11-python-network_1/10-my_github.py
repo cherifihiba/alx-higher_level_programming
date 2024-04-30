@@ -18,10 +18,10 @@ def get_github_id(username, password):
     Returns:
         int: GitHub user ID.
     """
-    url = f"https://api.github.com/user"
+    url = "https://api.github.com/user"
     response = requests.get(url, auth=(username, password))
     user_data = response.json()
-    return user_data.get('id')
+    return user_data["id"]
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
