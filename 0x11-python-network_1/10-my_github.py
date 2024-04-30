@@ -33,7 +33,7 @@ if __name__ == "__main__":
     if len(sys.argv) == 3:
         username = sys.argv[1]
         password = sys.argv[2]
-        github_id = get_github_id(username, f'token {password}')
+        github_id = get_github_id(username, password)
         print(github_id if github_id else "None")
     else:
         print("Usage: ./10-my_github.py <username> <password>")
