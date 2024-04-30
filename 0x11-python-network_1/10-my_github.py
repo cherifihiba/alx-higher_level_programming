@@ -21,7 +21,7 @@ def get_github_id(username, password):
     """
     url = 'https://api.github.com/user'
     try:
-        response = requests.get(url, auth=(username, f"token {password}"))
+        response = requests.get(url, auth=(username, f"{password}"))
         if response.status_code == 200:
             return response.json().get('id')
         else:
