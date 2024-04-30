@@ -1,1 +1,1 @@
-The complexity of the algorithm is: O(log(n))
+The complexity of the algorithm is: O(n)
