@@ -18,7 +18,6 @@ def find_peak(list_of_integers):
            list_of_integers[i] >= list_of_integers[i + 1]:
             return list_of_integers[i]
 
-
 if __name__ == "__main__":
     list_of_integers = [1, 2, 4, 6, 3]
     print(find_peak(list_of_integers))  # 6
@@ -33,4 +32,6 @@ if __name__ == "__main__":
     list_of_integers = [4, 2, 1, 2, 2, 2, 3, 1]
     print(find_peak(list_of_integers))  # 4
 
-# Complexity: O(n)
+"""
+Complexity of find_peak function is O(n)
+"""
