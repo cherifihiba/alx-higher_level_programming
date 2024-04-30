@@ -3,7 +3,7 @@
 
 class Rectangle {
   constructor(w, h) {
-    if (w <= 0 || h <= 0 || typeof w !== 'number' || typeof h !== 'number') {
+    if (typeof w !== 'number' || typeof h !== 'number' || w <= 0 || h <= 0) {
       this.width = undefined;
       this.height = undefined;
     } else {
