@@ -17,9 +17,11 @@ if __name__ == "__main__":
 
     try:
         json_response = response.json()
-        if json_response:
-            print("[{}] {}".format(json_response.get('id'), json_response.get('name')))
-        else:
+        if isinstance(json_response, dict) and json_response:
+            print("[{}] {}".format(json_response['id'], json_response['name']))
+        elif isinstance(json_response, dict) and not json_response:
             print("No result")
+        else:
+            print("Not a valid JSON")
     except ValueError:
         print("Not a valid JSON")
